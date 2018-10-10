@@ -1,0 +1,18 @@
+plugins {
+    id 'application'
+}
+
+dependencies {
+    implementation 'io.aeron:aeron-all:1.11.2'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+
+    implementation 'com.google.guava:guava:23.0'
+
+    testImplementation 'junit:junit:4.12'
+}
+
+repositories {
+    jcenter()
+}
+
+mainClassName='Main'
