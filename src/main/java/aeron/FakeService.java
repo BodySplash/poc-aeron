@@ -12,6 +12,7 @@ public class FakeService implements ClusteredService {
     @Override
     public void onStart(Cluster cluster) {
         LOGGER.info("Start member {}", cluster.memberId());
+
     }
 
     @Override
@@ -28,6 +29,7 @@ public class FakeService implements ClusteredService {
     public void onSessionMessage(ClientSession session, long correlationId, long timestampMs, DirectBuffer buffer, int offset, int length, Header header) {
         LOGGER.info("Message {}", correlationId);
         String content = buffer.getStringWithoutLengthAscii(offset, length);
+        session.offer(correlationId, buffer, offset, length);
         LOGGER.info("Content {}", content);
     }
 
